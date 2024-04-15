@@ -10,8 +10,6 @@
         uses: actions/setup-node@v4
         with: 
           node-version: 18
-      - name: install dependencies
-        run: npm install
   deploy: 
     runs-on: ubuntu-latest
     steps:
@@ -21,8 +19,6 @@
         uses: actions/setup-node@v4
         with: 
           node-version: 18
-      - name: install dependencies
-        run: npm install
       - name: Build
         run: npm run build
       - name: deploy
