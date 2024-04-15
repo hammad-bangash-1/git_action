@@ -1,10 +1,29 @@
-name: First workflow
-on: workflow_dispatch
-jobs: 
+ name: First workflow
+ on: push
+ jobs: 
   first-job:
     runs-on: ubuntu-latestt
     steps:
-      - name: print greeting
-        run: echo "hello world!"
-      - name: print goodbye
-        run: echo "g-bye!"
+      - name: get code
+        uses: actions/checkout@v4
+      - name: install node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 18
+      - name: install dependencies
+        run: npm ci
+  deploy: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v4
+      - name: install node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 18
+      - name: install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: deploy
+        run: npm echo "deploy...."
