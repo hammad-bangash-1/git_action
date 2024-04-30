@@ -11,6 +11,7 @@
         with: 
           node-version: 18
   deploy: 
+    needs: first-job
     runs-on: ubuntu-latest
     steps:
       - name: get code
